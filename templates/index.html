@@ -25,7 +25,7 @@
 
 			{% for usuario in usuarios %}
 			<tr>
-				<td style="width:100px"><img src="{{ MEDIA_URL}}{{ usuario.imagen }}"></td>
+				<td ><img style="width:90px; height:100px" src="{{ MEDIA_URL}}{{ usuario.imagen }}"></td>
 				<td>{{ usuario.nombre }}</td>
 				<td>{{ usuario.apellidos }}</td>
 				<td>{{ usuario.edad }}</td>
@@ -52,20 +52,29 @@
 {% load i18n %}
 {% block otros %}
 <div class="pagination">
-	<span class="current">
-            Page {{ usuarios.number }} of {{ usuarios.paginator.num_pages }}.<br>
-        </span>
+	
     <ul>
         {% if usuarios.has_previous %}
-            <li><a href="?page={{ usuarios.previous_page_number }}">prev</a></li>
+            <li><a href="?page={{ usuarios.previous_page_number }}"> &lsaquo;&lsaquo;</a></li>
         {% else %}
-        	<li><a href="#">prev</a></li>
+        	<li><span> &lsaquo;&lsaquo;</span></li>
         {% endif %}
 
+
+    	{% for i in usuarios.paginator.page_range %}
+    		{% ifequal i usuarios.number%}
+    			<li class="active"><a href="" > {{i}}</a></li>	
+
+    		{% else %}
+    			<li><a href="?page={{ i }}"> {{i}} </a></li>
+    		{% endifequal %}
+    		
+    	{% endfor %}
+
         {% if usuarios.has_next %}
-            <li><a href="?page={{ usuarios.next_page_number }}">next</a></li>
+            <li><a href="?page={{ usuarios.next_page_number }}"> &rsaquo;&rsaquo;</a></li>
         {% else %}
-        	<li><a href="#">next</a></li>
+        	<li><span> &rsaquo;&rsaquo; </span></li>
         {% endif %}
     </ul>
 </div>

@@ -20,3 +20,6 @@ body{
 .pagination li>a{
 	color:#000 !important;	
 }
+.pagination ul > .active > a, .pagination ul > .active > span {
+	background-color: rgb(219, 219, 219) !important;
+}
