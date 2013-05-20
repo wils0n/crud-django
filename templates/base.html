@@ -11,6 +11,7 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap-responsive.css">
   <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css">
 
   <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
@@ -23,6 +24,14 @@
         
       {% endblock contenido %}
   </div>
+  
+  <div id="otros">
+    {% block otros %}
+      
+    {% endblock otros %}
+  </div>
+
 </body>
+
 </html>
 

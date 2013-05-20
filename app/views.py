@@ -7,9 +7,23 @@ import os
 from os.path import join,realpath
 from django.conf import settings
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 def home(request):
 	usuarios=Usuario.objects.all()
 	# return render(request, 'index.html', {'usuarios': usuarios,})
+
+	paginator = Paginator(usuarios, 2) #muestra 2 contactos por pagina
+	page = request.GET.get('page')
+
+	try:
+		usuarios = paginator.page(page)
+	except PageNotAnInteger:
+		usuarios = paginator.page(1)
+	except EmptyPage:
+		usuarios = paginator.page(paginator.num_pages)
+    
+
 	return render_to_response('index.html', {'usuarios': usuarios}, context_instance=RequestContext(request))
 
 def registrar(request):

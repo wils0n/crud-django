@@ -45,3 +45,30 @@
 	</table>
 	<a href="{% url 'registrar' %}" class="btn btn-success">Agregar usuario</a>
 {% endblock contenido %}
+
+
+	
+{% if is_paginated %}
+{% load i18n %}
+{% block otros %}
+<div class="pagination">
+	<span class="current">
+            Page {{ usuarios.number }} of {{ usuarios.paginator.num_pages }}.<br>
+        </span>
+    <ul>
+        {% if usuarios.has_previous %}
+            <li><a href="?page={{ usuarios.previous_page_number }}">prev</a></li>
+        {% else %}
+        	<li><a href="#">prev</a></li>
+        {% endif %}
+
+        {% if usuarios.has_next %}
+            <li><a href="?page={{ usuarios.next_page_number }}">next</a></li>
+        {% else %}
+        	<li><a href="#">next</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock otros %}
+{% endif %}
+

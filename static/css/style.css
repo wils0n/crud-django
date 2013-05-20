@@ -11,3 +11,12 @@ body{
   	border: solid 1px black;
   	margin-top: 20px;
 }
+#otros{
+	margin: auto;
+	padding: auto;
+	color:#000;
+	text-align: center
+}
+.pagination li>a{
+	color:#000 !important;	
+}
